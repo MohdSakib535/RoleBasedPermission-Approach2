@@ -19,7 +19,6 @@ from rest_framework.permissions import IsAuthenticated
         "username": "ramesh",
         "email": "john2@example.com",
         "password": "sakib@123",
-        "role": "user"
 
     }
 """
@@ -58,7 +57,7 @@ from base.serializers import PermissionAssignmentSerializer2
 class AssignPermissionView(APIView):
 
     """
-    if user have permission view and change both and we send only add so add add permission along with not remove other permission so we get 3 permission
+    if user have permission view and change both and we send only add permission so add, add (permission) along with not remove other permission so we get 3 permission
 
     {
         "username": "vishal",
@@ -82,7 +81,6 @@ class AssignPermissionView(APIView):
                 # Get the content type for the specified model
                 content_type = ContentType.objects.get(app_label=app_label, model=model_name.lower())
 
-                # Iterate over the list of permission codenames
                 for permission_codename in permission_codenames:
                     try:
                         # Get the specific permission
@@ -177,7 +175,6 @@ class AssignPermissionView(APIView):
                 # Get the content type for the specified model
                 content_type = ContentType.objects.get(app_label=app_label, model=model_name.lower())
 
-                # Iterate over the list of permission codenames
                 for permission_codename in permission_codenames:
                     try:
                         # Get the specific permission
@@ -212,6 +209,8 @@ def Get_particular_user_permission(request):
     has_add_permission = user.has_perm(f'{Transaction._meta.app_label}.add_{Transaction._meta.model_name}')
     print(f"User Vishal has add transaction permission: {has_add_permission}")
 
+
+    #all current user permission
     for i in user_permissions:
         print(i,'----')
     
